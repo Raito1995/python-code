@@ -5,7 +5,7 @@ import pyautogui
 
 
 current_time = time.strftime("%Y-%m-%d-%H", time.localtime(time.time()))
-screen_image_path = 'D:/GitHub/python-code-examples/image/' + current_time + '.png'
+screen_image_path = 'D:/GitHub/python-code/image/' + current_time + '.png'
 
 
 def screenshot(image):
