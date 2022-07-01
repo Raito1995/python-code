@@ -30,21 +30,30 @@ def sharpness_enhancer(input_frame, element):
     return enhanced_image
 
 
-data_path = 'D:/PCBA/data_augmentation/'
-images_list = os.listdir(data_path)
+current_path = os.path.dirname(os.path.abspath(__file__))
+data_path = current_path + '\\data\\'
+bright = data_path + 'bright\\'
+color = data_path + 'color\\'
+contrast = data_path + 'contrast\\'
+sharp = data_path + 'sharp\\'
 
-bright = 'D:/PCBA/data_augmentation/bright/'
-color = 'D:/PCBA/data_augmentation/color/'
-contrast = 'D:/PCBA/data_augmentation/contrast/'
-sharp = 'D:/PCBA/data_augmentation/sharp/'
 
-for save_path in [bright, color, contrast, sharp]:
+for save_path in [data_path, bright, color, contrast, sharp]:
     if not os.path.exists(save_path):
         os.mkdir(save_path)
 
-color_enhanced_list = []
+images_list = []
+for file in os.listdir(current_path):
+    if file.endswith('png'):
+        images_list.append(file)
+    elif file.endswith('jpg'):
+        images_list.append(file)
+    elif file.endswith('jpeg'):
+        images_list.append(file)
+
+
 for num in range(len(images_list)):
-    image_path = os.path.join(data_path, images_list[num])
+    image_path = os.path.join(current_path, images_list[num])
     if os.path.isfile(image_path):
         frame = Image.open(image_path)
         factor = 0.5
